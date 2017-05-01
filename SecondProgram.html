@@ -1,0 +1,28 @@
+<html>
+<head>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+
+	<style>
+		input{
+		text-align: center;
+		width: 50px;
+		border-style: inset;
+		}
+	</style>
+
+	
+
+</head>
+
+<body ng-app class="txtstyle">
+	<input type="text" ng-model="n1" placeholder="0"> + 
+	<input type="text" ng-model="n2" placeholder="0">
+	<h1>
+		First Number : <span ng-bind="n1"></span>
+		<br>
+		Second Number : <span ng-bind="n2"></span>
+	</h1>
+	
+</body>
+</html>
