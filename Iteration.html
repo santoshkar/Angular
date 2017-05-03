@@ -1,0 +1,27 @@
+<html ng-app="EmpApp">
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+
+		<script type="text/javascript">
+			var empApp = angular.module('EmpApp', []);
+
+			empApp.controller('EmpController', [function() {
+				
+				this.employees = [
+					{id:'1', name:'Santosh', department: 'IT'},
+					{id:'2', name:'Prakash', department: 'Admin'},
+					{id:'3', name:'Swati', department: 'HR'},
+					{id:'4', name:'Sreekant', department: 'HR'}
+				];				
+			}]);
+
+		</script>
+	</head>
+
+	<body ng-controller="EmpController as empCtrl">		
+		<div ng-repeat="emp in empCtrl.employees">		
+			<b>{{emp.name}}</b> with id <b>{{emp.id}}</b> is working in department <b>{{emp.department}}</b>
+		</div>
+	</body>
+</html>
+

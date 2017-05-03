@@ -6,13 +6,14 @@
 	    var org = angular.module('org',['emp','dept']);
 		
 		var emp = angular.module('emp',[]);
-		emp.controller('EmpController', ['$scope', function($scope) {
-		  $scope.name = 'Santosh Kumar Kar';
+
+		emp.controller('EmpController', [function() {
+		  this.name = 'Santosh Kumar Kar';
 		}]);
 
 		var dept = angular.module('dept',[]);
-		dept.controller('DeptController', ['$scope', function($scope) {
-		  $scope.name = 'IT';
+		dept.controller('DeptController', [function() {
+		  this.name = 'IT';
 		}]);
 
 	</script>
@@ -22,14 +23,14 @@
 
 <body ng-app="org">
 
-	<div  ng-controller="EmpController">
-	  Employee Name: {{ name }}
+	<div  ng-controller="EmpController as emp">
+	  Employee Name: {{ emp.name }}
 	 
 	</div>
-	 <div ng-controller="DeptController">
-	  Department Name: {{ name }}
-	</div>
-	
+	 <div ng-controller="DeptController as dept">
+	  Department Name: {{ dept.name }}
+	</div>	
 
 </body>
 </html>
+

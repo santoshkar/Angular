@@ -1,0 +1,62 @@
+<html ng-app="calculatorApp">
+	
+	<head>	
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"> 
+		</script>
+
+		<script type="text/javascript">
+			
+			var calculatorApp = angular.module('calculatorApp', []);
+			calculatorApp.controller('CalculatorControl', [function() {
+				
+				this.add = function(){					
+					this.res = parseFloat(this.n1)+parseFloat(this.n2);
+				}
+
+				this.sub = function(){					
+					this.res = parseFloat(this.n1)-parseFloat(this.n2);
+				}
+
+				this.mul = function(){					
+					this.res = parseFloat(this.n1)*parseFloat(this.n2);
+				}
+				
+				this.div = function(){					
+					this.res = parseFloat(this.n1)/parseFloat(this.n2);
+				}
+
+			}]);
+
+			
+		</script>
+	<head>
+
+	<body ng-controller="CalculatorControl as calc">
+		<table>
+			<tr>
+			<td>No. 1 </td>
+			<td><input type="text" ng-model="calc.n1" placeHolder="enter a number"/></td>
+			</tr>
+
+			<tr>
+			<td>No. 2 </td>
+			<td><input type="text" ng-model="calc.n2" placeHolder="enter a number"/>
+			</td>
+			</tr>
+
+			<tr>
+			<td>Result</td>
+			<td><input type="text" ng-model="calc.res" placeHolder="Result Here"/></td>
+			</tr>
+
+			<tr >
+			<td colspan="2">
+				<button ng-click='calc.add();'>Add</button>
+				<button ng-click='calc.sub();'>Subtract</button>
+				<button ng-click='calc.mul();'>Multiply</button>
+				<button ng-click='calc.div();'>Divide</button>
+			</td>			
+			</tr>
+		</table>
+	</body>
+</html>
