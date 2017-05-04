@@ -1,0 +1,63 @@
+<html ng-app="validationApp">
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-sanitize.min.js"></script>
+	</head>
+	
+	<body ng-controller="ValidationCtrl as ctrl">
+
+		<form ng-submit="ctrl.submit()" name="myForm">
+
+			<table>
+				<tr>
+					<td>Id: </td>
+					<td>
+						<input type="text" ng-model="ctrl.user.id" required type="number" maxlength="3">
+
+						<span ng-show="myForm.id.$error.required">
+							This is a required field
+						</span>
+						<span ng-show="myForm.id.$error.minlength">
+							Minimum length required is 4
+						</span>
+						<span ng-show="myForm.id.$invalid">
+							This field is invalid
+						</span>
+					</td>
+				</tr>	<!--			
+				<tr>
+					<td>Name: </td>
+					<td><input type="text" ng-model="ctrl.user.name" required ng-minlength="10"></td>
+				</tr>
+				<tr>
+					<td>E-Mail: </td>
+					<td><input type="text" ng-model="ctrl.user.email" required type="email"></td>
+				</tr>
+				<tr>
+					<td>Date of Join: </td>
+					<td><input type="text" ng-model="ctrl.user.dob" required type="date"></td>
+				</tr>
+				<tr>
+					<td>Organisation URL:  </td>
+					<td><input type="text" ng-model="ctrl.user.url" required type="url"></td>
+				</tr>	-->
+			</table>
+
+			<input type="submit" value="Submit" >
+			
+			<p ng-bind-html="ctrl.user"></p>	
+
+		</form>
+
+		
+	
+		<script type="text/javascript">
+			angular.module('validationApp', ['ngSanitize']).controller('ValidationCtrl', [function() {
+				
+				this.submit = function() {
+					this.user = "<strong> Id : </Strong>"+JSON.stringify(this.user);				
+				};
+			}]);
+		</script>
+	</body>
+</html>

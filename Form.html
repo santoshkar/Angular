@@ -1,0 +1,44 @@
+<html ng-app="userApp">
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-sanitize.min.js"></script>
+	</head>
+	
+	<body ng-controller="UserCtrl as ctrl">
+
+		<form ng-submit="ctrl.submit()" name="myForm">
+
+			<table>
+				<tr>
+					<td>Id: </td>
+					<td><input type="text" ng-model="ctrl.user.id" required></td>
+				</tr>
+				<tr>
+					<td>Name: </td>
+					<td><input type="text" ng-model="ctrl.user.name" required></td>
+				</tr>
+				<tr>
+					<td>Department </td>
+					<td><input type="text" ng-model="ctrl.user.dept" required></td>
+				</tr>
+			</table>
+
+			<input type="submit" value="Submit1" ng-disabled="myForm.$invalid">
+			<input type="submit" value="Submit2" >
+			
+			<p ng-bind-html="ctrl.user"></p>	
+
+		</form>
+
+		
+	
+		<script type="text/javascript">
+			angular.module('userApp', ['ngSanitize']).controller('UserCtrl', [function() {
+				
+				this.submit = function() {
+					this.user = "<strong> Id : </Strong>"+JSON.stringify(this.user);				
+				};
+			}]);
+		</script>
+	</body>
+</html>
