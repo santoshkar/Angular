@@ -1,0 +1,67 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+	<script type="text/javascript">
+		angular.module('filtersApp', []).controller('FilterCtrl', [function() {		
+			this.value1 = 123456789;
+			this.value2 = 500;
+			this.value3 = 'AngularJS';
+			this.now = new Date();
+		}]);
+	</script>
+
+</head>
+<body ng-app="filtersApp">
+	
+	<div ng-controller="FilterCtrl as ctrl">
+
+		<table border="1">			
+			<tr>
+				<th>Value</th>
+				<th>Filter</th>
+				<th>Formatted value</th>
+			</tr>
+			<tr>
+				<td>{{ctrl.value1}}</td>
+				<td>number</td>
+				<td>{{ctrl.value1 | number}}</td>
+			</tr>
+			<tr>
+				<td>{{ctrl.value2}}</td>
+				<td>currency</td>
+				<td>{{ctrl.value2 | currency}}</td>
+			</tr>
+			<tr>
+				<td>{{ctrl.value2}}</td>
+				<td>currency:'INR'</td>
+				<td>{{ctrl.value2 | currency:'INR'}}</td>
+			</tr>
+			<tr>
+				<td>{{ctrl.value3}}</td>
+				<td>uppercase</td>
+				<td>{{ctrl.value3 | uppercase}}</td>
+			</tr>
+			<tr>
+				<td>{{ctrl.value3}}</td>
+				<td>lowercase</td>
+				<td>{{ctrl.value3 | lowercase}}</td>
+			</tr>
+			<tr>
+				<td>{{ctrl.now}}</td>
+				<td>date:'medium'</td>
+				<td>{{ctrl.now | date:'medium'}}</td>
+			</tr>
+			<tr>
+				<td>{{ctrl.now}}</td>
+				<td>date:'dd-MMM-yyyy'</td>
+				<td>{{ctrl.now | date:'dd-MMM-yyyy'}}</td>
+			</tr>
+			<tr>
+				<td>{{ctrl.now}}</td>
+				<td>date:'dd-MM-yyyy hh:mm:ss'</td>
+				<td>{{ctrl.now | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+			</tr>
+		</table>	
+	</div>
+</body>
+</html>

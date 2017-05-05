@@ -8,21 +8,6 @@
 
 		<form ng-submit="ctrl.submit()" name="myForm">
 
-			<!--<table>
-				<tr>
-					<td>Id: </td>
-					<td><input type="text" ng-model="ctrl.user.id"></td>
-				</tr>
-				<tr>
-					<td>Name: </td>
-					<td><input type="text" ng-model="ctrl.user.name"></td>
-				</tr>
-				<tr>
-					<td>Department </td>
-					<td><input type="text" ng-model="ctrl.user.dept"></td>
-				</tr>
-			</table> --->
-
 			Two letter country code <input type="text" ng-model="ctrl.ccode">
 
 			<input type="submit" value="Submit">
@@ -42,8 +27,6 @@
 										
 					$http.get('http://services.groupkt.com/country/get/iso2code/'+myvar.ccode)
 					.then(function(res) {
-
-
 											
 						var result = res.data.RestResponse.result;
 
