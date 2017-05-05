@@ -1,0 +1,67 @@
+<html ng-app="userApp">
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-sanitize.min.js"></script>
+	</head>
+	
+	<body ng-controller="UserCtrl as ctrl">
+
+		<form ng-submit="ctrl.submit()" name="myForm">
+
+			<!--<table>
+				<tr>
+					<td>Id: </td>
+					<td><input type="text" ng-model="ctrl.user.id"></td>
+				</tr>
+				<tr>
+					<td>Name: </td>
+					<td><input type="text" ng-model="ctrl.user.name"></td>
+				</tr>
+				<tr>
+					<td>Department </td>
+					<td><input type="text" ng-model="ctrl.user.dept"></td>
+				</tr>
+			</table> --->
+
+			Two letter country code <input type="text" ng-model="ctrl.ccode">
+
+			<input type="submit" value="Submit">
+			
+			
+			<p ng-bind-html="ctrl.usertxt"></p>	
+
+		</form>
+
+		
+	
+		<script type="text/javascript">
+			angular.module('userApp', ['ngSanitize']).controller('UserCtrl', ['$http', function($http) {
+				var myvar = this;
+				
+				this.submit = function() {
+										
+					$http.get('http://services.groupkt.com/country/get/iso2code/'+myvar.ccode)
+					.then(function(res) {
+
+
+											
+						var result = res.data.RestResponse.result;
+
+						if(result){						
+							myvar.usertxt = "<strong> Name : </Strong>"+result.name+"<br><strong> alpha2_code : </Strong>"+result.alpha2_code+"<br><strong> alpha3_code : </Strong>"+result.alpha3_code+"<br>";
+						}else{							
+							myvar.usertxt = "<p style='color:red;'>Invalid Country Code :"+myvar.ccode+"</p>";
+						}
+
+					},function errorCallback(response) {
+						alert(response);
+						 // called asynchronously if an error occurs
+						 // or server returns response with an error status.
+					});
+
+
+				};
+			}]);
+		</script>
+	</body>
+</html>

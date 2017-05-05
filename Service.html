@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script>
+         var app = angular.module('myApp', []);
+         
+		 /*
+			Service
+		 */
+         app.service('strUtil', function() {
+         
+             this.strRev = function (txtValue) {
+         		return (txtValue.split("").reverse().join(""));
+             }
+         
+         	this.strCount = function (txtValue) {
+         		return (txtValue.length);
+             }
+         
+         	this.isNumber = function (txtValue) {
+         		return !isNaN(txtValue);
+             }
+         
+         
+         });
+         
+		 /*
+			Controller
+		 */
+         app.controller('myCtrl', function(strUtil) {
+			
+			/*
+				Evaluate Function
+			*/
+			this.evaluate = function(){					
+				this.rev = strUtil.strRev(this.value);
+				this.cnt = strUtil.strCount(this.value);
+				this.isNumber = strUtil.isNumber(this.value);
+			}
+			
+         });
+         
+      </script>
+   </head>
+   <body>
+      <div ng-app="myApp" ng-controller="myCtrl as ctrl" style="border:1px solid; position:absolute; margin:50px; padding:50px; padding-top:10px; color:rgb(255,10,150); width:50%">
+		<h1 style="color:yellow; background:black; text-align:center">Angular Service</h1>
+         <p>Your Text here : <input type="text" ng-model="ctrl.value" placeHolder="enter something">
+         <button ng-click="ctrl.evaluate();" style="background:black; color:white; font-weight:bold; border:5px solid green;" > Evaluate </button></p>
+		 <h3>Entered Value: {{ctrl.value}}</h3>
+         <h3>Reverse: {{ctrl.rev}}</h3>
+         <h3>Size: {{ctrl.cnt}}</h3>
+         <h3>Is number: {{ctrl.isNumber}}</h3>
+      </div>
+   </body>
+</html>
