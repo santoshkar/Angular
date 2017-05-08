@@ -1,0 +1,70 @@
+<html>
+<head>
+</head>
+	<style>
+		input[type='text'], input[type='email'], input[type='url'], input[type='password'] {
+			padding: 0 10px;
+			height: 32px;
+			font-size: 16px;		
+			width: 100%;
+			min-width: 50px;
+		}
+
+		html {
+			font-family: sans-serif;
+		}
+
+		.mandatory{
+			color:red;
+		}
+		
+		.d1 {
+			float: left;
+			padding-bottom: 10px;		
+			position: relative;
+			min-height: 1px;
+			padding-left: 10px;
+			padding-right: 10px;
+			max-width: 100%;
+			box-sizing: border-box;
+
+		}
+
+		.product{
+			cell-spacing: collapse;
+		}
+
+
+		body {
+			font: 12px;
+			font-weight: 400;
+		}
+
+		
+
+
+	</style>
+
+
+</head>
+
+<h1>Online Order</h1>
+<p> <h5>Welcome to Online Order System. Here you can see item catalogues, order any items, check the status.</h5> </p1>
+
+<div class="d1">
+	<p>Name <span class="mandatory"> * </span> <input type="text"></p>
+	<p>E-mail <span class="mandatory"> * </span> <input type="text"></p>
+	<p>Phone <span class="mandatory"> * </span> <input type="text"></p>
+	<br><hr><br>
+	<h4>Choose your preferred product  <span class="mandatory"> * </span></h4>
+	<p class="product">
+		<p><input type="radio">Product 1</radio> </p>
+		<p><input type="radio">Product 2</radio> </p>
+		<p><input type="radio">Product 3</radio> </p>
+	</p>
+	<br><hr><br>
+	<p>Delivery Date <span class="mandatory"> * </span> <input type="text"></p>
+</div>
+
+
+

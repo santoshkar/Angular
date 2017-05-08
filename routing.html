@@ -1,0 +1,62 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-route.js"></script>
+
+	<script type="text/javascript">
+			
+		var myvar = angular.module('org',['ngRoute']);
+
+
+		myvar.config(function($routeProvider) {		
+			$routeProvider
+				.when('/', {
+					//templateUrl : 'home.html',
+					template: '<div><h1>Home Page</h1><hr><p style="color:red">{{ home.message }}</p></div>',
+					controller: 'HomeController',
+					controllerAs  : 'home'
+				}).when('/about', {
+					template: '<div><h1>About Page</h1><hr><p style="background:blue; color:white; position:absolute">{{ about.message }}</p></div>',
+					controller: 'AboutController',
+					controllerAs  : 'about'
+				}).when('/contact', {
+					template: '<div><h1>Contact Page</h1><hr><p style="background:green; color:white; position:absolute">{{ contact.message }}</p></div>',
+					controller: 'ContactController',
+					controllerAs  : 'contact'
+				});
+		});
+
+		myvar.controller('HomeController', function() {
+			this.message = 'This is the Home page. This is the first page in the application...';
+		});
+
+		myvar.controller('AboutController', function() {
+			this.message = 'This is About Page. Here you would get details about us.';
+		});
+
+		myvar.controller('ContactController', function() {
+			this.message = 'Contact us! JK. This is just a demo.';
+		});	
+
+	</script>
+
+
+</head>
+
+<body ng-app="org">
+
+	<div>
+
+	   <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about"> About</a></li>
+        <li><a href="#contact"> Contact</a></li>
+      </ul>
+	 
+	</div>
+
+	<div ng-view></div>
+	
+
+</body>
+</html>
